@@ -26,7 +26,7 @@ Cómo Ejecutar el Proyecto 🖥️
 
   Clona el repositorio:
 
-  git clone 
+  git clone https://github.com/gabrielrubio22/SistemaGestionAerolinea.git
 
   Abre el proyecto en Visual Studio 2022.
   Compila y ejecuta el programa.
