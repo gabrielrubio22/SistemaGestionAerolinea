@@ -37,12 +37,29 @@ namespace Practica
             Console.WriteLine("");
             vuelo1.MostrarDetalle();//se muestra informacion del vuelo creado
 
+            //Creamos tripulacion
+            Piloto piloto1 = new Piloto(1, "Manuel Rubio", "LIC-12481");
+            AsistenteVuelo auxiliar1 = new AsistenteVuelo(2, "Martha Orihuela", "CERT-68690");
+
+            //Agregamos tripulacion
+            vuelo1.AgregarTripulacion(piloto1);
+            vuelo1.AgregarTripulacion(auxiliar1);
+
+            //ver la tripulacion asignada
+            Console.WriteLine("\nTripulacion asignada al vuelo: ");
+            foreach(var asignacion in vuelo1.ListaTripulacion)
+            {
+                Console.WriteLine($"- {asignacion.Tripulacion.Nombre} ({asignacion.Tripulacion.GetType().Name})");
+            }
+
+
             //Se crea un nuevo pasajero
             Pasajeros pasajero1 = new Pasajeros(60368412,"Carlos Eduardo Rodiguez Garzon");
 
             //se crea una nueva reserva con el vuelo creado anteriormente.
             var reserva = pasajero1.ReservarVuelo(vuelo1);
 
+            Console.WriteLine("\n____________Reservas____________");    
             Console.WriteLine($"\nReserva creada por: {reserva.Pasajero.Nombre}");
             Console.WriteLine($"Numero: {reserva.NumeroReserva}, Vuelo: {reserva.Vuelo.NumeroVuelo}, Estado: {reserva.Estado}");
 

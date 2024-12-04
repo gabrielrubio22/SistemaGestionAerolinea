@@ -52,5 +52,25 @@ namespace SistemaGestionAerolinea
         {
             return ListaPasajeros.Count < Avion.CapacidadAsientos;
         }
+
+        public void AgregarTripulacion(Tripulacion tripulacion)
+        {    
+            //verificamos si la tripulacion ya esta asignada al vuelo
+            if (ListaTripulacion.Any(a => a.Tripulacion == tripulacion))
+            {
+                Console.WriteLine($"La tripulacion {tripulacion.Nombre} ya esta asignada al vuelo: {NumeroVuelo}");
+                return;
+            }
+
+            //se crea una nueva asignacion
+            var asignacion = new AsignacionTripulacion($"ASG-{ListaTripulacion.Count+1}",this,tripulacion);
+            ListaTripulacion.Add(asignacion);
+
+            // Asignar el vuelo a la lista de vuelos del tripulante
+            tripulacion.AgregarVuelo(this);
+
+            Console.WriteLine($"Tripulacion: {tripulacion.Nombre} asignada al vuelo {NumeroVuelo}");
+
+        }
     }
 }

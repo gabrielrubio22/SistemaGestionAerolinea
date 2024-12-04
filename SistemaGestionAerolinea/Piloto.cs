@@ -9,5 +9,18 @@ namespace SistemaGestionAerolinea
     public class Piloto : Tripulacion
     {
         public string LicenciaPiloto { get; set; }
+
+        public Piloto(int numeroIdentificacion, string nombre, string licencia)
+            :base(numeroIdentificacion, nombre)
+        {
+            LicenciaPiloto = licencia;
+        }
+
+        public void Volar(Vuelo vuelo)
+        {
+            Console.WriteLine($"Piloto {Nombre} esta volando el vuelo {vuelo.NumeroVuelo}");
+        }
+
+
     }
 }
